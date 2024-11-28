@@ -3,7 +3,7 @@ name: Build Rust Project on Windows
 on:
   push:
     branches:
-      - master # Триггер на пуш в основную ветку (можете настроить под свою ветку)
+      - main  # Триггер на пуш в основную ветку (можете настроить под свою ветку)
 
 jobs:
   build:
@@ -23,3 +23,9 @@ jobs:
         cargo rustc --release -- -C opt-level=3 -C target-cpu=native -C codegen-units=1 -C debuginfo=0
       env:
         CARGO_INCREMENTAL: 0  # Отключаем инкрементальные сборки для Windows
+
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: rust-build  # Имя артефакта (будет отображаться в GitHub Actions)
+        path: target/release/shaipot.exe  # Путь к собранному бинарнику

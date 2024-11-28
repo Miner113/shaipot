@@ -3,7 +3,7 @@ name: Build Rust Project on Windows
 on:
   push:
     branches:
-      - master  # Триггер на пуш в основную ветку (можете настроить под свою ветку)
+      - main  # Триггер на пуш в основную ветку (можете настроить под свою ветку)
 
 jobs:
   build:
@@ -14,7 +14,9 @@ jobs:
       uses: actions/checkout@v3  # Клонирование репозитория
 
     - name: Set up Rust
-      uses: actions-rs/toolchain@v1  # Устанавливаем Rust для GitHub Actions
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable  # Устанавливаем стабильную версию Rust
 
     - name: Build with cargo
       run: |

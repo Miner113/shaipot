@@ -3,7 +3,7 @@ name: Build Rust Project on Windows
 on:
   push:
     branches:
-      - main  # Триггер на пуш в основную ветку (можете настроить под свою ветку)
+      - master  # Триггер на пуш в основную ветку (можете настроить под свою ветку)
 
 jobs:
   build:
